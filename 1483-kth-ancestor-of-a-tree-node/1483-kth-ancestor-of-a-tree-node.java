@@ -1,10 +1,10 @@
 class TreeAncestor {
     int maxBits;
-    Integer [][] dp;
+    int[][] dp;
     public TreeAncestor(int n, int[] parent) {
         maxBits=(int) (Math.log(n) / Math.log(2) + 1);
-        dp=new Integer[maxBits][n];
-        for(int i=0;i<n;i++) dp[0][i]=parent[i];
+        dp=new int[maxBits][n];
+        dp[0]=parent;
         for(int i=1;i<maxBits;i++){
             for(int j=0;j<n;j++){
                 int last = dp[i - 1][j];
@@ -16,7 +16,6 @@ class TreeAncestor {
     public int getKthAncestor(int node, int k) {
         for(int i=0;i<maxBits;i++){
             if((k & (1<<i)) > 0){
-            
                 Integer val = dp[i][node];
                 
                 if(val==-1) return -1;
