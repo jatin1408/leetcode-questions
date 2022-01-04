@@ -7,23 +7,19 @@ class TreeAncestor {
         for(int i=0;i<n;i++) dp[0][i]=parent[i];
         for(int i=1;i<maxBits;i++){
             for(int j=0;j<n;j++){
-                int pre = dp[i - 1][j];
-                dp[i][j] = pre == -1 ? -1 : dp[i - 1][pre];
+                int last = dp[i - 1][j];
+                dp[i][j] = last == -1 ? -1 : dp[i - 1][last];
             }
         }
-        // for(Integer[] arr:dp){
-        //     for(Integer ele:arr) System.out.print(ele + " -> ");
-        //     System.out.println();
-        // }
     }
     
     public int getKthAncestor(int node, int k) {
         for(int i=0;i<maxBits;i++){
             if((k & (1<<i)) > 0){
-                // System.out.println(i);
+            
                 Integer val = dp[i][node];
-                // System.out.println(val);
-                if(val==null || val==-1) return -1;
+                
+                if(val==-1) return -1;
                 node=val;
             }
         }
