@@ -9,12 +9,11 @@ class Solution {
                 st.pop();
                 break;
             }
-            if(add) 
-                st.add(ch);
+            if(add) st.add(ch);
             
         }
         StringBuilder res=new StringBuilder();
-        while(!st.isEmpty()) res.insert(0,st.pop());
-        return res.toString();
+        while(!st.isEmpty()) res.append(st.pop());
+        return res.reverse().toString();
     }
 }
