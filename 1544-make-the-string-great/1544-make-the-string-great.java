@@ -3,13 +3,8 @@ class Solution {
         Stack<Character> st=new Stack<>();
         for(int i=0;i<s.length();i++){
             char ch = s.charAt(i);
-            boolean add=true;
-            while(!st.isEmpty() && Math.abs(ch-st.peek()) == 32) {
-                add=false;
-                st.pop();
-                break;
-            }
-            if(add) st.add(ch);
+           if(!st.isEmpty() && Math.abs(st.peek() - ch) == 32) st.pop();
+           else st.add(ch);
             
         }
         StringBuilder res=new StringBuilder();
